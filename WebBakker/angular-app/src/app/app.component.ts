@@ -53,12 +53,10 @@ export class AppComponent implements OnInit {
   }
   // Hieronder methode om produkt toe te voegen in de lijst
   addProdukt(value: string) {
-    let addedProdukt = new Produkt(
-      this.produkten.length + 1, // id number
-      value // de naam
-    );
+    let addedProdukt = new Produkt(this.produkten.length + 1, this.newProdukt);
     this.produkten.push(addedProdukt);
   }
+  
 }
   
 

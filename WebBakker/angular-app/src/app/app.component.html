@@ -1,24 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
+
+<!-- app.component.html -->
 <div class="container">
   <h1>{{ title }}</h1>
   <ul class="list-group" *ngIf="showProdukten">
     <li class="list-group-item" *ngFor="let produkt of produkten" (click)="showProdukt(produkt)">
-      {{ produkt.id }} - {{ produkt.naam }}
+      {{ produkt.id }} - {{ produkt.naam }} 
     </li>
-  </ul><br />
-  <!--<input type="text" class="form-control-lg"
-         placeholder="Nieuw produkt...."
-         #txtProdukt
-         (keyup.enter)="addProdukt(txtProdukt.value)" /><br />-->
-  <div *ngIf="currentProdukt">
-    <img [src]="produktPhoto" alt="currentProdukt.naam" class="produktPhoto"/>
-    <h2>Gekozen produkt: {{ currentProdukt.naam }}</h2>
-  </div>
-  <!--<h2>{{ newProdukt }}</h2>-->
-  <!--<input type="checkbox" (change)="toggleProdukten()" />{{ toggleMsg }}<br /><br />-->
-  <!--<h2 *ngIf="produkten.length > 3">Amaai minder dan 3 produkten in de bakkerij</h2>-->
-  <!--<button type="button" class="btn btn-success" (click)="btnClick()">Bestel</button>-->
-  <button type="button" class="btn btn-success" (click)="addProdukt(txtProdukt.value)">Toevoegen</button>
-</div>
+  </ul><br /><br />
+  <!-- Door ngModel geen parameters meer nodig : variabele leeft al in de controller -->
+  <input type="text" [(ngModel)]="newProdukt" class="form-control-lg"><br /><br />
+  <button (click)="addProdukt()" class="btn btn-success">Produkt toevoegen</button>
+  <br>
+  <h2>{{ newProdukt }} </h2>
 
+
+  <!-- Als er een produkt is aangeklikt, wordt deze waarde opgeslagen
+  in currentProdukt. Hiervan is een foto met de betreffende naam aanwezig
+  in de map /assets/img/. Er is ook CSS-stijl toegevoegd aan app.component.css -->
+  <div *ngIf="currentProdukt">
+    <img class="produktPhoto" [src]="produktPhoto" [alt]="currentProdukt.naam">
+    <h2> Gekozen produkt: {{ currentProdukt.naam}} </h2>
+  </div>
+
+
+</div>
 
