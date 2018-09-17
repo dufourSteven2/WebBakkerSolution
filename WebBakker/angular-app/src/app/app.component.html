@@ -1,11 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
   <h1>{{ title }}</h1>
-  <ul class="list-group">
+  <ul class="list-group" *ngIf="showProdukten">
     <li class="list-group-item" *ngFor="let produkt of produkten">
       {{ produkt.id }} - {{ produkt.naam }}
     </li>
   </ul>
+  <h2 *ngIf="produkten.length > 3">Amaai minder dan 3 produkten in de bakkerij</h2>
 </div>
 
 
