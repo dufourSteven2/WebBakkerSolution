@@ -28,6 +28,10 @@ export class AppComponent implements OnInit {
     this.title = 'Mijn produkten - via Model';
     this.showProdukten = this.produkten.length > 3;
   }
+  //Eventhadler hoofdstuk 4 Zie html lijn button
+  btnClick() {
+    alert('Dit was een click op de bestelknop')
+  }
 }
   
 
