@@ -2,12 +2,12 @@
 <div class="container">
   <h1>{{ title }}</h1>
   <ul class="list-group" *ngIf="showProdukten">
-    <li class="list-group-item" *ngFor="let produkt of produkten">
+    <li class="list-group-item" *ngFor="let produkt of produkten" (click)="showProdukt(produkt)">
       {{ produkt.id }} - {{ produkt.naam }}
     </li>
-  </ul>
-  <input type="checkbox" (change)="toggleProdukten()" />{{ toggleMsg }}
-  <h2 *ngIf="produkten.length > 3">Amaai minder dan 3 produkten in de bakkerij</h2>
+  </ul><br />
+  <input type="checkbox" (change)="toggleProdukten()" />{{ toggleMsg }}<br /><br />
+  <!--<h2 *ngIf="produkten.length > 3">Amaai minder dan 3 produkten in de bakkerij</h2>-->
   <button type="button" class="btn btn-success" (click)="btnClick()">Bestel</button>
 </div>
 

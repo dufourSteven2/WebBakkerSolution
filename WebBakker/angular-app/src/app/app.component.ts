@@ -40,6 +40,9 @@ export class AppComponent implements OnInit {
       ? this.toggleMsg = 'Verberg de lijst met produkten.'
       : this.toggleMsg = 'Toon de lijst met produkten';
   }
+  showProdukt(produkt: Produkt) {
+    alert('Uw keuze is: ' + produkt.naam);
+  }
 }
   
 
