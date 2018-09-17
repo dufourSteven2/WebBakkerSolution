@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="angular-app\src\assets\img\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

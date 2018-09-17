@@ -18,17 +18,19 @@ export class AppComponent implements OnInit {
   showProdukten: boolean = true;
   toggleMsg: string = 'Verberg de lijst met produkten';
   newProdukt: string = '';
+  currentProdukt: Produkt;
+  produktPhoto: string = '';
 
   constructor() {
     this.produkten = [
       new Produkt(1, 'Brood'),
       new Produkt(2, 'Belegde broodjes'),
-      new Produkt(3, 'Kofiekoeken'),
+      new Produkt(3, 'Koffiekoeken'),
       new Produkt(4, 'Taart')
     ]
   }
   ngOnInit() {
-    this.title = 'Mijn produkten - via Model - Stad toevoegen via txtvak';
+    this.title = 'Produkt selecteren - attribute binding FOTO';
     this.showProdukten = this.produkten.length > 3;
   }
   //Eventhadler hoofdstuk 4 Zie html lijn button
@@ -42,7 +44,9 @@ export class AppComponent implements OnInit {
       : this.toggleMsg = 'Toon de lijst met produkten';
   }
   showProdukt(produkt: Produkt) {
-    alert('Uw keuze is: ' + produkt.naam);
+    //alert('Uw keuze is: ' + produkt.naam);
+    this.currentProdukt = produkt;
+    this.produktPhoto = `assets/img/${this.currentProdukt.naam}.jpg`;
   }
   changeProdukt(value: string) {
     this.newProdukt = value;

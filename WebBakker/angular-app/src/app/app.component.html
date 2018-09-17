@@ -6,11 +6,15 @@
       {{ produkt.id }} - {{ produkt.naam }}
     </li>
   </ul><br />
-  <input type="text" class="form-control-lg"
+  <!--<input type="text" class="form-control-lg"
          placeholder="Nieuw produkt...."
          #txtProdukt
-         (keyup.enter)="addProdukt(txtProdukt.value)" /><br />
-  <h2>{{ newProdukt }}</h2>
+         (keyup.enter)="addProdukt(txtProdukt.value)" /><br />-->
+  <div *ngIf="currentProdukt">
+    <img [src]="produktPhoto" alt="currentProdukt.naam" class="produktPhoto"/>
+    <h2>Gekozen produkt: {{ currentProdukt.naam }}</h2>
+  </div>
+  <!--<h2>{{ newProdukt }}</h2>-->
   <!--<input type="checkbox" (change)="toggleProdukten()" />{{ toggleMsg }}<br /><br />-->
   <!--<h2 *ngIf="produkten.length > 3">Amaai minder dan 3 produkten in de bakkerij</h2>-->
   <!--<button type="button" class="btn btn-success" (click)="btnClick()">Bestel</button>-->
