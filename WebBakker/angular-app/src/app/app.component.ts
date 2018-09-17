@@ -13,5 +13,5 @@ export class AppComponent implements OnInit{
     this.title = 'Bakkerij - Angular-App';
     this.produkten= ['Brood', 'Belegde broodjes', 'Koffiekoeken', 'Taarten'];
   }
-  
+  //
 }
