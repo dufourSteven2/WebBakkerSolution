@@ -15,7 +15,9 @@ import { Produkt } from "./shared/model/produkt.model";
 export class AppComponent implements OnInit {
   title: string;
   produkten: Produkt[];
-  showProdukten: boolean;
+  showProdukten: boolean = true;
+  toggleMsg: string = 'Verberg de lijst met produkten';
+
   constructor() {
     this.produkten = [
       new Produkt(1, 'Brood'),
@@ -31,6 +33,12 @@ export class AppComponent implements OnInit {
   //Eventhadler hoofdstuk 4 Zie html lijn button
   btnClick() {
     alert('Dit was een click op de bestelknop')
+  }
+  toggleProdukten() {
+    this.showProdukten = !this.showProdukten;
+    this.showProdukten
+      ? this.toggleMsg = 'Verberg de lijst met produkten.'
+      : this.toggleMsg = 'Toon de lijst met produkten';
   }
 }
   
