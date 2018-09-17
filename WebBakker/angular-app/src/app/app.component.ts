@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Produkt } from "./shared/model/produkt.model";
+import { ProduktService } from './shared/services/produkt.service'; //hier import service
 
 @Component({
   selector: 'app-root',
@@ -21,18 +22,14 @@ export class AppComponent implements OnInit {
   currentProdukt: Produkt;
   produktPhoto: string = '';
 
-  constructor() {
-    this.produkten = [
-      new Produkt(1, 'Brood'),
-      new Produkt(2, 'Belegde broodjes'),
-      new Produkt(3, 'Koffiekoeken'),
-      new Produkt(4, 'Taart')
-    ]
-  }
+
+  constructor(private produktService: ProduktService) { }
+
   ngOnInit() {
-    this.title = 'Produkt selecteren - attribute binding FOTO';
-    this.showProdukten = this.produkten.length > 3;
+    this.title = 'Produkt via SERVICE';
+    this.produkten = this.produktService.getProdukten();
   }
+
   //Eventhadler hoofdstuk 4 Zie html lijn button
   btnClick() {
     alert('Dit was een click op de bestelknop')
