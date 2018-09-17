@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     ]
   }
   ngOnInit() {
-    this.title = 'Mijn produkten - via Model';
+    this.title = 'Mijn produkten - via Model - KLIK op een produkt';
     this.showProdukten = this.produkten.length > 3;
   }
   //Eventhadler hoofdstuk 4 Zie html lijn button
