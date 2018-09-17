@@ -6,9 +6,15 @@
       {{ produkt.id }} - {{ produkt.naam }}
     </li>
   </ul><br />
-  <input type="checkbox" (change)="toggleProdukten()" />{{ toggleMsg }}<br /><br />
+  <input type="text" class="form-control-lg"
+         placeholder="Nieuw produkt...."
+         #txtProdukt
+         (keyup.enter)="addProdukt(txtProdukt.value)" /><br />
+  <h2>{{ newProdukt }}</h2>
+  <!--<input type="checkbox" (change)="toggleProdukten()" />{{ toggleMsg }}<br /><br />-->
   <!--<h2 *ngIf="produkten.length > 3">Amaai minder dan 3 produkten in de bakkerij</h2>-->
-  <button type="button" class="btn btn-success" (click)="btnClick()">Bestel</button>
+  <!--<button type="button" class="btn btn-success" (click)="btnClick()">Bestel</button>-->
+  <button type="button" class="btn btn-success" (click)="addProdukt(txtProdukt.value)">Toevoegen</button>
 </div>
 
 

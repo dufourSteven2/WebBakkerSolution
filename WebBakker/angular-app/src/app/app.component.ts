@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   produkten: Produkt[];
   showProdukten: boolean = true;
   toggleMsg: string = 'Verberg de lijst met produkten';
+  newProdukt: string = '';
 
   constructor() {
     this.produkten = [
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
     ]
   }
   ngOnInit() {
-    this.title = 'Mijn produkten - via Model - KLIK op een produkt';
+    this.title = 'Mijn produkten - via Model - Stad toevoegen via txtvak';
     this.showProdukten = this.produkten.length > 3;
   }
   //Eventhadler hoofdstuk 4 Zie html lijn button
@@ -42,6 +43,17 @@ export class AppComponent implements OnInit {
   }
   showProdukt(produkt: Produkt) {
     alert('Uw keuze is: ' + produkt.naam);
+  }
+  changeProdukt(value: string) {
+    this.newProdukt = value;
+  }
+  // Hieronder methode om produkt toe te voegen in de lijst
+  addProdukt(value: string) {
+    let addedProdukt = new Produkt(
+      this.produkten.length + 1, // id number
+      value // de naam
+    );
+    this.produkten.push(addedProdukt);
   }
 }
   
