@@ -2,8 +2,8 @@
 <div class="container">
   <h1>{{ title }}</h1>
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let produktnaam of produkten">
-      {{ produktnaam }}
+    <li class="list-group-item" *ngFor="let produkt of produkten">
+      {{ produkt.id }} - {{ produkt.naam }}
     </li>
   </ul>
 </div>
