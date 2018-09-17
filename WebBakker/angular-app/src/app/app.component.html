@@ -2,17 +2,16 @@
 <!-- app.component.html -->
 <div class="container">
   <h1>{{ title }}</h1>
-  <ul class="list-group" *ngIf="showProdukten">
+  <ul class="list-group" > 
     <li class="list-group-item" *ngFor="let produkt of produkten" (click)="showProdukt(produkt)">
       {{ produkt.id }} - {{ produkt.naam }} 
     </li>
   </ul><br /><br />
   <!-- Door ngModel geen parameters meer nodig : variabele leeft al in de controller -->
-  <input type="text" [(ngModel)]="newProdukt" class="form-control-lg"><br /><br />
-  <button (click)="addProdukt()" class="btn btn-success">Produkt toevoegen</button>
+  <input type="text" #newProdukt class="form-control-lg"><br /><br />
+  <button (click)="addProdukt(newProdukt.value)" class="btn btn-primary">Produkt toevoegen</button>
   <br>
-  <h2>{{ newProdukt }} </h2>
-
+  
 
   <!-- Als er een produkt is aangeklikt, wordt deze waarde opgeslagen
   in currentProdukt. Hiervan is een foto met de betreffende naam aanwezig

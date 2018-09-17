@@ -22,6 +22,13 @@ export class ProduktService {
   getProdukt(id: number): Produkt {
     return this.produkten.find(c => c.id === id);
   }
+  //produkt toevoegen
+  addProdukt(produktNaam: string): void {
+    let newProdukt = new Produkt(
+      this.produkten.length + 1,
+      produktNaam);
+    this.produkten.push(newProdukt);
+  }
 
   // Overige methodes voor de service
 }

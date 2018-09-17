@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   constructor(private produktService: ProduktService) { }
 
   ngOnInit() {
-    this.title = 'Produkt via SERVICE';
+    this.title = 'Produkt Toevoegen via SERVICE';
     this.produkten = this.produktService.getProdukten();
   }
 
@@ -49,9 +49,8 @@ export class AppComponent implements OnInit {
     this.newProdukt = value;
   }
   // Hieronder methode om produkt toe te voegen in de lijst
-  addProdukt(value: string) {
-    let addedProdukt = new Produkt(this.produkten.length + 1, this.newProdukt);
-    this.produkten.push(addedProdukt);
+  addProdukt(produktNaam: string) {
+    this.produktService.addProdukt(produktNaam);
   }
   
 }
