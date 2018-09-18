@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Produkt } from '../model/produkt.model';
+import { HttpClient } from '@angular/common/http';
+
+// Observable stuff
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable() 
 
 export class ProduktService {
-
+  constructor(private http: HttpClient) {}
   // retourneer alle produkten
-  getProdukten() {
-   //TODO talk to api
+  getProdukten(): Observable<Produkt[]> {
+    return this.http
+      .get<Produkt[]>('../assets/data/produkten.json')
+      .pipe(tap(result => console.log('opgehaald via de service: ', result)));
   }
 
   // retourneer produkten adhv ID

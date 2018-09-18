@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produkt } from "./shared/model/produkt.model";
 import { ProduktService } from './shared/services/produkt.service'; //hier import service
+import { Observable } from 'rxjs';
 
 // importeer de Service
 import { HttpClient } from '@angular/common/http';
@@ -16,19 +17,14 @@ export class AppComponent implements OnInit {
   produkten: Produkt[];
   currentProdukt: Produkt;
   produktPhoto: string = '';
+  produkten$: Observable<Produkt[]>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private produktService: ProduktService) { }
 
   ngOnInit() {
-    this.title = 'Produkt via HttpClient';
-    this.http
-
-      .get<Produkt[]>('../assets/data/produkten.json')
-
-      .pipe(tap(result => console.log('opgehaald via JSON: ', result)))
-
-      .subscribe(produkten => (this.produkten = produkten));
-
+    this.title = 'Produkt via HttpClient en service';
+    this.produktService.getProdukten().subscribe(produkten => (this.produkten = produkten));
+    this.produkten$ = this.produktService.getProdukten();
   }
 
   showProdukt(produkt: Produkt) {
