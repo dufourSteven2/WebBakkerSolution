@@ -30,5 +30,11 @@ export class ProduktService {
     this.produkten.push(newProdukt);
   }
 
+  // stad verwijderen
+  deleteProdukt(produkt: Produkt): void {
+    let index = this.produkten.indexOf(produkt); // eerst positie in array opzoeken
+    this.produkten.splice(index, 1); // op gevonden positie 1 item verwijderen.
+  }
+
   // Overige methodes voor de service
 }

@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   constructor(private produktService: ProduktService) { }
 
   ngOnInit() {
-    this.title = 'Produkt Toevoegen via SERVICE';
+    this.title = 'Produkt Toevoegen - Verwijderen via SERVICE';
     this.produkten = this.produktService.getProdukten();
   }
 
@@ -52,7 +52,15 @@ export class AppComponent implements OnInit {
   addProdukt(produktNaam: string) {
     this.produktService.addProdukt(produktNaam);
   }
-  
+
+  // Stad verwijderen --> doorgeven aan de service
+  deleteProdukt(produkt: Produkt) {
+    this.produktService.deleteProdukt(produkt);
+  }
+
 }
+
+  
+
   
 
