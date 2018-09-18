@@ -1,0 +1,24 @@
+{
+  "produkten": [
+    {
+      "id": 1,
+      "naam": "Brood"
+    },
+    {
+      "id": 2,
+      "naam": "Belegde broodjes"
+    },
+    {
+      "id": 3,
+      "naam": "Koffiekoeken"
+    },
+    {
+      "id": 4,
+      "naam": "Taart"
+    },
+    {
+      "id": 5,
+      "naam": "praline"
+    }
+  ]
+}

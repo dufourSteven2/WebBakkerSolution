@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Produkt } from "./shared/model/produkt.model";
 import { ProduktService } from './shared/services/produkt.service'; //hier import service
 
 // importeer de Service
-import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,39 +13,49 @@ import { tap } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title: string;
-  produkten: Produkt[];
-  currentProdukt: Produkt;
-  produktPhoto: string = '';
+  produkten$: Observable<Produkt[]>;
+  currentprodukt$: Observable<Produkt>;
+  //title: string;
+  //produkten: Produkt[];
+  //currentProdukt: Produkt;
+  //produktPhoto: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private produktService: ProduktService) { }
 
   ngOnInit() {
-    this.title = 'Produkt via HttpClient';
-    this.http
-
-      .get<Produkt[]>('../assets/data/produkten.json')
-
-      .pipe(tap(result => console.log('opgehaald via JSON: ', result)))
-
-      .subscribe(produkten => (this.produkten = produkten));
-
+    this.title = 'Steden via json-server';
+    this.produkten$ = this.produktService.getProdukten();
+  }
+  // Detailgegevens voor produkt ophalen
+  getProdukt(id: number) {
+    this.currentprodukt$ = this.produktService.getProdukt(id);
   }
 
-  showProdukt(produkt: Produkt) {
-    //alert('Uw keuze is: ' + produkt.naam);
-    this.currentProdukt = produkt;
-    this.produktPhoto = `assets/img/${this.currentProdukt.naam}.jpg`;
-  }
-  // Hieronder methode om produkt toe te voegen in de lijst
+  // Produkt toevoegen --> doorgeven aan de service
   addProdukt(produktNaam: string) {
-    //ToDO
+
+    // id === null, omdat deze automatisch door json-server wordt ingevuld
+
+    const newProdukt = new Produkt(null, produktNaam);
+    this.produktService.addProdukt(newProdukt).subscribe((addedProdukt: Produkt) => {
+      // produkten opnieuw ophalen in de subscription.
+      this.produkten$ = this.produktService.getProdukten();
+      this.currentprodukt$ = of(addedProdukt);
+    });
   }
 
-  // Stad verwijderen --> doorgeven aan de service
+  // Produkt verwijderen --> doorgeven aan de service
   deleteProdukt(produkt: Produkt) {
-    //Todo
+    // TODO
   }
 
+  editProdukt(produkt: Produkt) {
+    // TODO
+  }
+
+  clear() {
+    this.currentprodukt$ = null;
+  }
 }
 
   

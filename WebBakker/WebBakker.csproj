@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="angular-app\src\assets\data\" />
     <Folder Include="angular-app\src\assets\img\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
@@ -20,6 +21,12 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="angular-app\src\app\shared\model\produkt.model.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="angular-app\produkten.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

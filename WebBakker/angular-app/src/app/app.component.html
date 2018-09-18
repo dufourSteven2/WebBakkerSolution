@@ -1,27 +1,34 @@
-
 <!-- app.component.html -->
 <div class="container">
   <h1>{{ title }}</h1>
-  <ul class="list-group" > 
-    <li class="list-group-item" *ngFor="let produkt of produkten" (click)="showProdukt(produkt)">
-      {{ produkt.id }} - {{ produkt.naam }}
-      <button class="btn btn-danger btn-sm float-right" (click)="deleteProdukt(produkt)">Verwijderen</button>
-    </li>
-  </ul><br />
-  <!-- Door ngModel geen parameters meer nodig : variabele leeft al in de controller -->
-  <input type="text" #newProdukt class="form-control-lg"><br /><br />
-  <button (click)="addProdukt(newProdukt.value)" class="btn btn-primary">Produkt toevoegen</button>
-  <br><br />
-  
+  <div class="row">
+    <div class="col-md-6">
 
-  <!-- Als er een produkt is aangeklikt, wordt deze waarde opgeslagen
-  in currentProdukt. Hiervan is een foto met de betreffende naam aanwezig
-  in de map /assets/img/. Er is ook CSS-stijl toegevoegd aan app.component.css -->
-  <div *ngIf="currentProdukt">
-    <img class="produktPhoto" [src]="produktPhoto" [alt]="currentProdukt.naam"><br />
-    <h2> Gekozen produkt: {{ currentProdukt.naam}} </h2>
+      <ul class="list-group">
+        <li class="list-group-item" (click)="getProdukt(produkt.id)" *ngFor="let produkt of produkten$ | async">
+          {{ produkt.id }} - {{ produkt.naam }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <input type="text" placeholder="New produkt..." #newProdukt class="form-control-lg"> <br /><br />
+      <!--<input type="text" placeholder="Categorie..." #newCategorie class="form-control-lg">-->
+      <button class="btn btn-primary" (click)="addProdukt(newProdukt.value)">Toevoegen</button>
+      <div *ngIf="currentProdukt$ | async as city">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-info">
+            <h3>Gekozen produkt</h3>
+          </li>
+          <li class="list-group-item">
+            <strong>Produkt: </strong>{{ produkt.naam }} (id: {{ produkt.id }})
+          </li>
+          <!--<li class="list-group-item">
+            <strong>Provincie: </strong>
+          </li>-->
+        </ul><br />
+        <button class="btn btn-warning" (click)="clear()">Clear</button>
+      </div>
+    </div>
   </div>
 
-
 </div>
-
