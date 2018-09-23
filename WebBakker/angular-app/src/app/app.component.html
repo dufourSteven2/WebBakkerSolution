@@ -6,15 +6,16 @@
 
       <ul class="list-group">
         <li class="list-group-item" (click)="getProdukt(produkt.id)" *ngFor="let produkt of produkten$ | async">
-          {{ produkt.id }} - {{ produkt.naam }}
+          {{ produkt.id }} - {{ produkt.item }}   ({{produkt.naam}})
         </li>
-      </ul>
-    </div>
+      </ul><br />
+      <input type="text" placeholder="Naam..." #newProdukt class="form-control-lg"><br /><br />
+      <input type="text" placeholder="Item..." #newItem class="form-control-lg"><br /><br />
+      <button class="btn btn-primary" (click)="addProdukt(newProdukt.value, newItem.value)">Toevoegen</button>
+    </div><br />
     <div class="col-md-6">
-      <input type="text" placeholder="New produkt..." #newProdukt class="form-control-lg"> <br /><br />
-      <!--<input type="text" placeholder="Categorie..." #newCategorie class="form-control-lg">-->
-      <button class="btn btn-primary" (click)="addProdukt(newProdukt.value)">Toevoegen</button>
-      <div *ngIf="currentProdukt$ | async as city">
+
+      <div *ngIf="currentprodukt$ | async as produkt">
         <ul class="list-group">
           <li class="list-group-item list-group-item-info">
             <h3>Gekozen produkt</h3>
@@ -22,11 +23,11 @@
           <li class="list-group-item">
             <strong>Produkt: </strong>{{ produkt.naam }} (id: {{ produkt.id }})
           </li>
-          <!--<li class="list-group-item">
-            <strong>Provincie: </strong>
-          </li>-->
-        </ul><br />
-        <button class="btn btn-warning" (click)="clear()">Clear</button>
+          <li class="list-group-item">
+            <strong>Item: </strong>{{ produkt.item }}
+          </li>
+        </ul>
+        <button class="btn btn-warning" (click)="clear()">Leeg Maken</button>
       </div>
     </div>
   </div>

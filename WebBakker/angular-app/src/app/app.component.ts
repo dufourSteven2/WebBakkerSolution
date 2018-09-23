@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   produkten$: Observable<Produkt[]>;
   currentprodukt$: Observable<Produkt>;
   //title: string;
-  //produkten: Produkt[];
+ // produkten: Produkt[];
   //currentProdukt: Produkt;
   //produktPhoto: string = '';
 
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.title = 'Steden via json-server';
     this.produkten$ = this.produktService.getProdukten();
+
   }
   // Detailgegevens voor produkt ophalen
   getProdukt(id: number) {
@@ -32,11 +33,11 @@ export class AppComponent implements OnInit {
   }
 
   // Produkt toevoegen --> doorgeven aan de service
-  addProdukt(produktNaam: string) {
+  addProdukt(produktNaam: string, produktItem: string) {
 
     // id === null, omdat deze automatisch door json-server wordt ingevuld
 
-    const newProdukt = new Produkt(null, produktNaam);
+    const newProdukt = new Produkt(null, produktNaam, produktItem);
     this.produktService.addProdukt(newProdukt).subscribe((addedProdukt: Produkt) => {
       // produkten opnieuw ophalen in de subscription.
       this.produkten$ = this.produktService.getProdukten();

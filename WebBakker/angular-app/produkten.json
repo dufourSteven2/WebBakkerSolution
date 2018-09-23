@@ -2,23 +2,38 @@
   "produkten": [
     {
       "id": 1,
-      "naam": "Brood"
+      "naam": "Brood",
+      "item": "Wit brood"
     },
     {
       "id": 2,
-      "naam": "Belegde broodjes"
+      "naam": "Belegde broodjes",
+      "item": "Smos"
     },
     {
       "id": 3,
-      "naam": "Koffiekoeken"
+      "naam": "Koffiekoeken",
+      "item": "Chocolade met pudding"
     },
     {
       "id": 4,
-      "naam": "Taart"
+      "naam": "Taart",
+      "item": "Aardbeien"
     },
     {
       "id": 5,
-      "naam": "praline"
+      "naam": "praline",
+      "item": "Minibox"
+    },
+    {
+      "id": 6,
+      "naam": "Brood",
+      "item": "Bruin brood"
+    },
+    {
+      "id": 7,
+      "naam": "Brood",
+      "item": "Meergranen"
     }
   ]
 }
